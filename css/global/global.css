@@ -1,0 +1,18 @@
+.bg-primary {
+    background-color: #13194C !important;
+}
+
+.bg-secondary {
+    background-color: #FFD4A0 !important;
+}
+
+input:focus {
+    border-color: #FFD4A0 !important;
+    box-shadow: none !important;
+}
+
+.container-card {
+    border-radius: 0px;
+    padding: 40px;
+    background-color: #fff;
+}
