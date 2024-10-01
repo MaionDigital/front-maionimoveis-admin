@@ -16,3 +16,9 @@ input:focus {
     padding: 40px;
     background-color: #fff;
 }
+
+@media screen and (max-width: 767px) {
+    .body-content {
+        margin-top: 3rem !important;
+    }
+}

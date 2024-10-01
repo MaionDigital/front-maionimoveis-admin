@@ -7,7 +7,7 @@
         include("./templates/scripts.php");
     ?>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/css/pages/home/home.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/css/pages/login/login.css">
 
     <title>Maion Imóveis | Admin</title>
     

@@ -17,7 +17,9 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
 <script src="<?php echo $BASE_URL ?>/js/helpers/isTokenExpired/isTokenExpired.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/ensureAuth/ensureAuth.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/logout/logout.js"></script>
-<script src="<?php echo $BASE_URL ?>/js/helpers/cryptoJS/cryptoJS.js"></script>
+<script src="<?php echo $BASE_URL ?>/js/helpers/cryptoJS/encrypt.js"></script>
+<script src="<?php echo $BASE_URL ?>/js/helpers/cryptoJS/decrypt.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/urlSearch/urlSearch.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/toasts/toasts.js"></script>
+<script src="<?php echo $BASE_URL ?>/js/helpers/sidebarMenu/sidebarMenu.js"></script>
 
