@@ -19,6 +19,7 @@ async function router(method, url, data=null, getResponse=false, token=false) {
 
         return getResponse ? response : ""
     } catch(error) {
+        console.log(error)
         const appError = error?.response?.data?.validateError[0]?.constraints?.message
         createOpsToast(appError || "Algo deu errado, tente novamente mais tarde.")
         throw Error()

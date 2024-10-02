@@ -12,10 +12,8 @@
             $("#link-sidebar-localization").addClass("active")
         })
     </script>
-    <script src="<?php echo $BASE_URL ?>/js/pages/localizacao/localization.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/css/pages/dashboard/dashboard.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="<?php echo $BASE_URL ?>/js/pages/localizacao/localization.js"></script>
 
     <title>Admin | Localização</title>
 </head>

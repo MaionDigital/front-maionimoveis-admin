@@ -93,7 +93,7 @@ async function registerNeighborhood(event) {
     const neighborhood = $("#input-neighborhood")
 
     if (!cityId || !neighborhood.val()) {
-        createOpsToast("Por favor, informe a cidade e o nome de um baiiro.")
+        createOpsToast("Por favor, informe a cidade e o nome de um bairo.")
         unloaderBtn(registerNeighborhoodBtn, "Adicionar Bairro")
         return
     }
