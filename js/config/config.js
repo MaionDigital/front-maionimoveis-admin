@@ -7,7 +7,8 @@ const CRYPTO_KEY = "realestate_admin"
 
 const ENDPOINTS = {
     auth: "/auth",
-    admin: "/admin"
+    admin: "/admin",
+    localization: "/localization"
 }
 
 // DICEBERA API CONFIG

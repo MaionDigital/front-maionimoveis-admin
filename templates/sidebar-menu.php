@@ -5,6 +5,9 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
             <div class="header_toggle"> 
                 <i class='bx bx-menu' id="header-toggle"></i> 
             </div>
+            <div class="header_img">
+                <img id="header-profile-img" src="" alt="">
+            </div>
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
@@ -13,23 +16,29 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
                     <div class="nav_list"> 
                         <a href="#" id="nav-logo" class="d-none d-flex justify-content-center"> 
                             <img src="<?php echo $BASE_URL ?>/images/logos/maion-logo-white.png" alt="" style="width: 100px;">
+                            <br>
                         </a>
 
                         <hr class="text-white">
 
-                        <a href="#" class="nav_link active"> 
+                        <a class="nav_link link" id="link-sidebar-dashboard" onclick="changePage('dashboard')"> 
                             <i class='bx bx-grid-alt nav_icon'></i> 
                             <span class="nav_name">Dashboard</span> 
                         </a>
 
-                        <a href="#" class="nav_link">
+                        <a class="nav_link link" id="link-sidebar-localization" onclick="changePage('localizacao')">
                             <i class="bx bx-map nav_icon"></i>
                             <span class="nav_name">Localização</span>
                         </a>
 
-                        <a href="#" class="nav_link"> 
+                        <a class="nav_link link" id="link-sidebar-users" onclick="changePage('usuarios')"> 
                             <i class='bx bx-user nav_icon'></i> 
                             <span class="nav_name">Usuários</span> 
+                        </a>
+
+                        <a class="nav_link link" id="link-sidebar-api" onclick="changePage('apis')">
+                            <i class="bx bx-cog nav_icon"></i>
+                            <span class="nav_name">APIs</span>
                         </a>
 
                         <hr class="text-white">
@@ -44,3 +53,9 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
             </nav>
 
         </div>
+
+        <script>
+            $(document).ready(() => {
+                $("#header-profile-img").attr("src", `${DICEBEAR_API_URL}&seed=Paulo Wellington`)
+            })
+        </script>
