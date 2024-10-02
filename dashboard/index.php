@@ -44,14 +44,14 @@
             <div class="row m-4">
                 <div class="col-lg-4">
                     <h4>Imóveis Cadastrados</h4>
-                    <canvas id="imoveisChart"></canvas>
+                    <canvas id="chart-properties-by-month"></canvas>
                 </div>
                 <div class="col-lg-4">
                     <h4>Tipos de Imóveis</h4>
                     <canvas id="chart-properties-by-type"></canvas>
                 </div>
                 <div class="col-lg-4">
-                    <h4>Imóveis por Estado</h4>
+                    <h4>Imóveis por Cidade</h4>
                     <canvas id="chart-properties-by-city"></canvas>
                 </div>
             </div>
@@ -92,64 +92,6 @@
 
     <script>
         $(document).ready(function() {
-
-const chartPropertiesByType = $("#chart-properties-by-type");
-
-new Chart(chartPropertiesByType, {
-    type: "bar",  // Mudando o tipo para gráfico de barras
-    data: {
-        labels: ["Casa", "Apartamento", "Sala Comercial", "Sítio", "Condomínio"],  // Tipos de imóveis
-        datasets: [
-            {
-                label: "Imóveis Cadastrados",
-                data: [142, 43, 54, 12, 19],  // Quantidade de imóveis cadastrados por tipo
-                backgroundColor: '#005555',  // Cor das barras
-                borderWidth: 2
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true,  // Eixo Y começa do zero
-                title: {
-                    display: true,
-                    text: 'Número de Imóveis'
-                }
-            }
-        }
-    }
-});
-
-
-            var imoveisCtx = $("#imoveisChart");
-var imoveisChart = new Chart(imoveisCtx, {
-    type: 'line',  // Mantendo o gráfico de barras
-    data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],  // Meses do ano
-        datasets: [{
-            label: 'Imóveis Cadastrados',
-            data: [50, 54, 77, 92, 99, 153, 189, 541, 872, 989, 1542, 2423], // Mock: Quantidade de imóveis cadastrados por mês
-            backgroundColor: '#13194C',  // Cor para as barras
-            borderWidth: 2,
-            fill: true
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true,  // Eixo Y começa do zero
-                title: {
-                    display: true,
-                    text: 'Número de Imóveis'
-                }
-            }
-        }
-    }
-});
-
 
 // Uso de Tokens pela IA (0 até 1 milhão)
 var tokensCtx = $("#tokensChart");
@@ -222,52 +164,6 @@ var emailsChart = new Chart(emailsCtx, {
         }
     }
 });
-
-// Imóveis por Cidade
-var propertiesByCityCtx = $("#chart-properties-by-city");
-var propertiesByCityChart = new Chart(propertiesByCityCtx, {
-    type: 'bar',
-    data: {
-        labels: ['Porto Seguro', 'Cabrália', 'Coroa Vermelha', 'Arraial d\'Ajuda', 'Trancoso', 'Caraíva'], // Cidades
-        datasets: [{
-            label: 'Quantidade de Imóveis',
-            data: [120, 80, 50, 60, 45, 30], // Mock: quantidade de imóveis por cidade
-            backgroundColor: ["#13194C"],
-            borderWidth: 2
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-
-// Usuários por Cidade
-// var usersByCityCtx = $("#chart-users-by-state");
-// var usersByCityChart = new Chart(usersByCityCtx, {
-//     type: 'bar',
-//     data: {
-//         labels: ['Porto Seguro', 'Cabrália', 'Coroa Vermelha', 'Arraial d\'Ajuda', 'Trancoso', 'Caraíva'], // Cidades
-//         datasets: [{
-//             label: 'Quantidade de Usuários',
-//             data: [200, 150, 100, 130, 90, 60], // Mock: quantidade de usuários por cidade
-//             backgroundColor: ["#FFDBAF"],
-//             borderWidth: 2
-//         }]
-//     },
-//     options: {
-//         responsive: true,
-//         scales: {
-//             y: {
-//                 beginAtZero: true
-//             }
-//         }
-//     }
-// });
 
 var situationCtx = $("#chart-properties-by-situation");
         var situationChart = new Chart(situationCtx, {
