@@ -3,6 +3,7 @@ $(document).ready(async () => {
     const chartUsersByType = $("#chart-users-by-type")
     const chartUsersByState = $("#chart-users-by-state")
     const chartUsersByGenre = $("#chart-users-by-genre")
+    const chartUsersByBirth = $("#chart-users-by-birth")
 
     const chartPropertiesByMonth = $("#chart-properties-by-month")
     const chartPropertiesByType = $("#chart-properties-by-type")
@@ -16,6 +17,48 @@ $(document).ready(async () => {
 
     const chartPropertiesByCondition = $("#chart-properties-by-condition")
     const chartPropertiesBySituation = $("#chart-properties-by-situation")
+
+    try {
+        const usersByBirth = (await router(
+            "GET",
+            `${ENDPOINTS.dashboard}/users-by-birth`,
+            null,
+            true,
+            // true
+        ))?.data
+
+        if (usersByBirth) {
+            new Chart(chartUsersByBirth, {
+                type: "bar",
+                data: {
+                    labels: ["Até 25", "25 - 35", "35 - 45", "45 - 55", "Acima de 55"],
+                    datasets: [{
+                        label: "Faixa etária",
+                        data: [
+                            usersByBirth.twentyFiveMax,
+                            usersByBirth.thirtyFiveMax,
+                            usersByBirth.fortyFiveMax,
+                            usersByBirth.fifityFiveMax,
+                            usersByBirth.aboveFifityFive
+                        ],
+                        backgroundColor: ["rgba(0, 85, 85)"],
+                        borderColor: "#005555",
+                        borderWidth: 2,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        }
+    } catch(error) {
+        return
+    }
 
     try {
         const propertiesBySituation = (await router(

@@ -34,18 +34,18 @@
                     <canvas id="chart-users-by-type"></canvas>
                 </div>
             </div>
-            <div class="row m-4 d-flex align-items-center">
-                <div class="col-lg-3">
+            <div class="row m-4 d-flex justify-content-evenly align-items-center">
+                <div class="col-lg-4">
                     <h4>Usuários por Estado</h4>
                     <canvas id="chart-users-by-state"></canvas>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <h4>Usuários por Gênero</h4>
                     <canvas id="chart-users-by-genre"></canvas>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <h4>Usuários por Faixa Etária</h4>
-                    <canvas id="chart-users-by-age"></canvas>
+                    <canvas id="chart-users-by-birth"></canvas>
                 </div>
             </div>
 
@@ -99,101 +99,8 @@
                 </div>
             </div>
 
-            <hr>
-
-            <div class="row mt-4 mb-5">
-                <!-- Gráfico de Emails Enviados -->
-                <div class="col-lg-4">
-                    <h4>Emails Enviados (Hoje)</h4>
-                    <canvas id="emailsChart"></canvas>
-                </div>
-                <!-- Gráfico de Tokens da IA -->
-                <div class="col-lg-4">
-                    <h4>Uso de Tokens pela Gemini AI</h4>
-                    <canvas id="tokensChart"></canvas>
-                </div>
-            </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function() {
-
-
-// Uso de Tokens pela IA (0 até 1 milhão)
-var tokensCtx = $("#tokensChart");
-var tokensChart = new Chart(tokensCtx, {
-    type: 'bar',  // Mudei para 'bar' para fazer barras empilhadas
-    data: {
-        labels: ['Input Tokens', 'Output Tokens'],  // Agrupando por categorias de Input e Output
-        datasets: [
-            {
-                label: 'Tokens Usados',
-                data: [89000, 245000],  // Tokens usados para Input e Output
-                backgroundColor: '#13194C',  // Cor para tokens usados
-                borderWidth: 1
-            },
-            {
-                label: 'Tokens Restantes',
-                data: [935000, 906000],  // Tokens restantes para Input e Output
-                backgroundColor: '#005555',  // Cor para tokens restantes
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                max: 1000000,  // Máximo de 1 milhão de tokens
-                stacked: true  // Habilitar empilhamento
-            },
-            x: {
-                stacked: true  // Habilitar empilhamento
-            }
-        }
-    }
-});
-
-
-// Emails Enviados e Abertos (0 até 100)
-var emailsCtx = $("#emailsChart");
-var emailsChart = new Chart(emailsCtx, {
-    type: 'bar',
-    data: {
-        labels: ['Emails Enviados', 'Abertos'], 
-        datasets: [{
-            label: "Quantidade de emails",
-            data: [54, 52], // Mock: 35 emails enviados, 34 abertos
-            backgroundColor: ["#13194C", "#FFDBAF"],
-            borderWidth: 2
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            tooltip: {
-                callbacks: {
-                    label: function(tooltipItem) {
-                        const totalEmails = 35; // Total enviado
-                        const value = tooltipItem.raw;
-                        const percentage = ((value / totalEmails) * 100).toFixed(2);
-                        return `${tooltipItem.label}: ${value} (${percentage}%)`; // Exibe valor e percentual
-                    }
-                }
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: 100
-            }
-        }
-    }
-});
-
-        });
-    </script>
 
     <?php include($BASE_URL . "/templates/footer-scripts.php"); ?>
 </body>
