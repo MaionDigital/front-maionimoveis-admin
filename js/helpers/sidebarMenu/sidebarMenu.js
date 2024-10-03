@@ -14,7 +14,7 @@ $(document).ready(function() {
         // Validate that all variables exist
         if(toggle.length && nav.length && bodypd.length && headerpd.length) {
             toggle.on('click', () => {
-                nav.toggleClass('show')
+                nav.toggleClass('show-sidebar')
                 toggle.toggleClass('bx-x')
                 bodypd.toggleClass('body-pd')
                 headerpd.toggleClass('body-pd')

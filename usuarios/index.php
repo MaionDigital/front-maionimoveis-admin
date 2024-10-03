@@ -12,12 +12,12 @@
             $("#link-sidebar-users").addClass("active")
         })
     </script>
-    <script src="<?php echo $BASE_URL ?>/js/pages/localizacao/localization.js"></script>
+    <script src="<?php echo $BASE_URL ?>/js/pages/usuarios/users.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/css/pages/dashboard/dashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-    <title>Admin | APIs</title>
+    <title>Admin | Usuários</title>
 </head>
 
 <div id="body-pd">
@@ -32,36 +32,25 @@
             <hr class="text-black">
 
         <div class="mt-4 me-4">
+
+            <div class="d-flex justify-content-end mb-2">
+                <button class="btn btn-sm bg-secondary" onclick="addUserModal()">
+                    <span class="text-white">
+                        Adicionar Usuário
+                    </span>
+                </button>
+            </div>
+
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
                         <th>Nome</th>
-                        <th>Email</th>
                         <th>Função</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Oliver</td>
-                        <td>oliver@example.com</td>
-                        <td>Gerente</td>
-                        <td>
-                            <button class="btn btn-sm bg-primary">
-                                <span class="text-white">Desativar</span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Sophia</td>
-                        <td>sophia@example.com</td>
-                        <td>Gerente</td>
-                        <td>
-                            <button class="btn btn-sm bg-primary">
-                                <span class="text-white">Desativar</span>
-                            </button>
-                        </td>
-                    </tr>
+                <tbody id="users-tbody">
+
                 </tbody>
             </table>
         </div>

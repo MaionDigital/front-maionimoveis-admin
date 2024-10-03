@@ -160,7 +160,7 @@ a {
         padding: 1rem 1rem 0 0;
     }
 
-    .show {
+    .show-sidebar {
         width: calc(var(--nav-width) + 135px);
     }
 

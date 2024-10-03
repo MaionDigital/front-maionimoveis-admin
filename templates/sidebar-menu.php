@@ -9,6 +9,7 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
                 <img id="header-profile-img" src="" alt="">
             </div>
         </header>
+
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div> 

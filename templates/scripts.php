@@ -20,7 +20,7 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
 <script src="<?php echo $BASE_URL ?>/js/helpers/logout/logout.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/cryptoJS/encrypt.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/cryptoJS/decrypt.js"></script>
-<script src="<?php echo $BASE_URL ?>/js/helpers/urlSearch/urlSearch.js"></script>
+<script src="<?php echo $BASE_URL ?>/js/helpers/modals/modals.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/toasts/toasts.js"></script>
 <script src="<?php echo $BASE_URL ?>/js/helpers/sidebarMenu/sidebarMenu.js"></script>
-
+<script src="<?php echo $BASE_URL ?>/js/helpers/urlSearch/urlSearch.js"></script>
