@@ -25,14 +25,16 @@
         <div class="body-content mt-4">
 
             <div class="row m-4 d-flex align-items-center">
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                     <h4>Usuários Cadastrados</h4>
                     <canvas id="chart-users-by-month"></canvas>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-6">
                     <h4>Tipos de Usuários</h4>
                     <canvas id="chart-users-by-type"></canvas>
                 </div>
+            </div>
+            <div class="row m-4 d-flex align-items-center">
                 <div class="col-lg-3">
                     <h4>Usuários por Estado</h4>
                     <canvas id="chart-users-by-state"></canvas>
@@ -40,6 +42,10 @@
                 <div class="col-lg-3">
                     <h4>Usuários por Gênero</h4>
                     <canvas id="chart-users-by-genre"></canvas>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Usuários por Faixa Etária</h4>
+                    <canvas id="chart-users-by-age"></canvas>
                 </div>
             </div>
 
@@ -65,12 +71,16 @@
 
             <div class="row m-4">
                 <div class="col-lg-4">
-                    <h4>Situação dos Imóveis</h4>
-                    <canvas id="chart-properties-by-situation"></canvas>
+                    <h4>Condição dos Imóveis</h4>
+                    <canvas id="chart-properties-by-condition"></canvas>
                 </div>
                 <div class="col-lg-4">
                     <h4>Tamanho Médio dos Imóveis</h4>
                     <canvas id="chart-properties-by-area"></canvas>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Situação dos Imóveis</h4>
+                    <canvas id="chart-properties-by-situation"></canvas>
                 </div>
             </div>
 
@@ -177,58 +187,6 @@ var emailsChart = new Chart(emailsCtx, {
             y: {
                 beginAtZero: true,
                 max: 100
-            }
-        }
-    }
-});
-
-var situationCtx = $("#chart-properties-by-situation");
-var situationChart = new Chart(situationCtx, {
-    type: 'line',  // Mudando o tipo para gráfico de linha
-    data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],  // Meses do ano
-        datasets: [
-            {
-                label: 'À Venda',
-                data: [10, 20, 35, 40, 50, 60, 70, 80, 100, 120, 130, 150],  // Dados mockados para imóveis à venda
-                backgroundColor: 'rgba(0, 85, 85, 0.2)',  // Cor de preenchimento
-                borderColor: '#005555',  // Cor da linha
-                borderWidth: 2,
-                fill: false  // Não preencher abaixo da linha
-            },
-            {
-                label: 'À Alugar',
-                data: [5, 10, 15, 25, 30, 35, 40, 50, 55, 60, 65, 70],  // Dados mockados para imóveis à alugar
-                backgroundColor: 'rgba(19, 25, 76, 0.2)',
-                borderColor: '#13194C',
-                borderWidth: 2,
-                fill: false
-            },
-            {
-                label: 'Temporada',
-                data: [2, 4, 6, 8, 10, 12, 14, 15, 16, 18, 19, 20],  // Dados mockados para imóveis de temporada
-                backgroundColor: 'rgba(255, 219, 175, 0.2)',
-                borderColor: '#FFDBAF',
-                borderWidth: 2,
-                fill: false
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: {
-                beginAtZero: true,  // Começar eixo Y do zero
-                title: {
-                    display: true,
-                    text: 'Quantidade de Imóveis'
-                }
-            },
-            x: {
-                title: {
-                    display: true,
-                    text: 'Meses do Ano'
-                }
             }
         }
     }

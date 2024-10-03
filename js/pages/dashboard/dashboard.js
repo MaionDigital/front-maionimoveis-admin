@@ -14,6 +14,111 @@ $(document).ready(async () => {
     const chartPropertiesPriceRent = $("#chart-properties-price-rent")
     const chartPropertiesPriceSeasonal = $("#chart-properties-price-seasonal")
 
+    const chartPropertiesByCondition = $("#chart-properties-by-condition")
+    const chartPropertiesBySituation = $("#chart-properties-by-situation")
+
+    try {
+        const propertiesBySituation = (await router(
+            "GET",
+            `${ENDPOINTS.dashboard}/properties-by-situation`,
+            null,
+            true,
+            // true
+        ))?.data
+
+        if (propertiesBySituation) {
+            new Chart(chartPropertiesBySituation, {
+                type: "bar",
+                data: {
+                    labels: ["Vendido", "Alugado", "Disponível"],
+                    datasets: [{
+                        label: "Quantidade de Imóveis",
+                        data: [
+                            propertiesBySituation?.soldProperties || 0,
+                            propertiesBySituation?.rentedProperties || 0,
+                            propertiesBySituation?.availableProperties || 0
+                        ],
+                        backgroundColor: ["#13194C", "#FFDBAF", "#005555"],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        }
+    } catch(error) {
+        return
+    }
+
+    try {
+        const propertiesByCondition = (await router(
+            "GET",
+            `${ENDPOINTS.dashboard}/properties-by-condition/2024`,
+            null,
+            true,
+            // true
+        ))?.data
+
+        if (propertiesByCondition) {
+            const dataForSale = Array(12).fill(0)
+            const dataForRent = Array(12).fill(0)
+            const dataForSeasonal = Array(12).fill(0)
+
+            propertiesByCondition.forEach((element) => {
+                const monthIndex = element.month - 1
+                dataForSale[monthIndex] = element.amountForSale
+                dataForRent[monthIndex] = element.amountForRent
+                dataForSeasonal[monthIndex] = element.amountForSeasonal
+            })
+
+            new Chart(chartPropertiesByCondition, {
+                type: "line",
+                data: {
+                    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                    datasets: [
+                        {
+                            label: "À Venda",
+                            data: dataForSale,
+                            backgroundColor: "#13194C",
+                            borderColor: "#13184C",
+                            borderWidth: 2
+                        },
+                        {
+                            label: "À Alugar",
+                            data: dataForRent,
+                            backgroundColor: "#FFDBAF",
+                            borderColor: "#FFDBAF",
+                            borderWidth: 2     
+                        },
+                        {
+                            label: "Temporada",
+                            data: dataForSeasonal,
+                            backgroundColor: "#005555",
+                            borderColor: "#005555",
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        }
+    } catch(error) {
+        return
+    }
+
     try {
         const usersByGenre = (await router(
             "GET",
@@ -29,6 +134,7 @@ $(document).ready(async () => {
                 data: {
                     labels: ["Masculino", "Feminino", "Prefere não dizer"],
                     datasets: [{
+                        label: "Quantidade de Usuários",
                         data: [
                         usersByGenre.amountMale,
                         usersByGenre.amountFemale,
@@ -212,7 +318,7 @@ $(document).ready(async () => {
                 },
                 options: {
                     responsive: true,
-                    scles: {
+                    scales: {
                         y: {
                             beginAtZero: true
                         }
