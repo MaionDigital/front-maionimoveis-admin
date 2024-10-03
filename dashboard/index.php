@@ -24,21 +24,26 @@
 
         <div class="body-content mt-4">
 
-            <div class="row m-4">
-                <div class="col-lg-4">
+            <div class="row m-4 d-flex align-items-center">
+                <div class="col-lg-3">
                     <h4>Usuários Cadastrados</h4>
                     <canvas id="chart-users-by-month"></canvas>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <h4>Tipos de Usuários</h4>
                     <canvas id="chart-users-by-type"></canvas>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <h4>Usuários por Estado</h4>
                     <canvas id="chart-users-by-state"></canvas>
                 </div>
+                <div class="col-lg-3">
+                    <h4>Usuários por Gênero</h4>
+                    <canvas id="chart-users-by-genre"></canvas>
+                </div>
             </div>
 
+            <hr>
             <hr>
 
             <div class="row m-4">
@@ -64,12 +69,23 @@
                     <canvas id="chart-properties-by-situation"></canvas>
                 </div>
                 <div class="col-lg-4">
-                    <h4>Faixa de Preço dos Imóveis</h4>
-                    <canvas id="chart-properties-by-price"></canvas>
-                </div>
-                <div class="col-lg-4">
                     <h4>Tamanho Médio dos Imóveis</h4>
                     <canvas id="chart-properties-by-area"></canvas>
+                </div>
+            </div>
+
+            <div class="row m-4">
+                <div class="col-lg-4">
+                    <h4>Média de Preço (venda)</h4>
+                    <canvas id="chart-properties-price-sell"></canvas>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Média de Preço (aluguel)</h4>
+                    <canvas id="chart-properties-price-rent"></canvas>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Média de Preço (temporada)</h4>
+                    <canvas id="chart-properties-price-seasonal"></canvas>
                 </div>
             </div>
 
@@ -92,6 +108,7 @@
 
     <script>
         $(document).ready(function() {
+
 
 // Uso de Tokens pela IA (0 até 1 milhão)
 var tokensCtx = $("#tokensChart");
@@ -166,70 +183,56 @@ var emailsChart = new Chart(emailsCtx, {
 });
 
 var situationCtx = $("#chart-properties-by-situation");
-        var situationChart = new Chart(situationCtx, {
-            type: 'bar',
-            data: {
-                labels: ['À venda', 'À alugar', 'Temporada'],
-                datasets: [{
-                    label: 'Situação dos Imóveis',
-                    data: [50, 30, 20], // Mock: 50 à venda, 30 à alugar, 20 para temporada
-                    backgroundColor: ["#005555", "#13194C", "#FFDBAF"],
-                    borderColor: ["#005555", "#13194C", "#FFDBAF"],
-                    borderWidth: 1
-                }]
+var situationChart = new Chart(situationCtx, {
+    type: 'line',  // Mudando o tipo para gráfico de linha
+    data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],  // Meses do ano
+        datasets: [
+            {
+                label: 'À Venda',
+                data: [10, 20, 35, 40, 50, 60, 70, 80, 100, 120, 130, 150],  // Dados mockados para imóveis à venda
+                backgroundColor: 'rgba(0, 85, 85, 0.2)',  // Cor de preenchimento
+                borderColor: '#005555',  // Cor da linha
+                borderWidth: 2,
+                fill: false  // Não preencher abaixo da linha
             },
-            options: {
-                responsive: true
+            {
+                label: 'À Alugar',
+                data: [5, 10, 15, 25, 30, 35, 40, 50, 55, 60, 65, 70],  // Dados mockados para imóveis à alugar
+                backgroundColor: 'rgba(19, 25, 76, 0.2)',
+                borderColor: '#13194C',
+                borderWidth: 2,
+                fill: false
+            },
+            {
+                label: 'Temporada',
+                data: [2, 4, 6, 8, 10, 12, 14, 15, 16, 18, 19, 20],  // Dados mockados para imóveis de temporada
+                backgroundColor: 'rgba(255, 219, 175, 0.2)',
+                borderColor: '#FFDBAF',
+                borderWidth: 2,
+                fill: false
             }
-        });
-
-        var priceCtx = $("#chart-properties-by-price");
-        var priceChart = new Chart(priceCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Até 100k', '100k - 300k', '300k - 500k', '500k - 1M', 'Acima de 1M'],
-                datasets: [{
-                    label: 'Quantidade de Imóveis',
-                    data: [10, 25, 15, 8, 5], // Mock: Quantidade de imóveis por faixa de preço
-                    backgroundColor: "#13194C",
-                    borderColor: "#13194C",
-                    borderWidth: 2
-                }]
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,  // Começar eixo Y do zero
+                title: {
+                    display: true,
+                    text: 'Quantidade de Imóveis'
+                }
             },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+            x: {
+                title: {
+                    display: true,
+                    text: 'Meses do Ano'
                 }
             }
-        });
-
-        var areaCtx = $("#chart-properties-by-area");
-        var areaChart = new Chart(areaCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Até 50m²', '50m² - 100m²', '100m² - 200m²', '200m² - 300m²', 'Acima de 300m²'],
-                datasets: [{
-                    label: 'Quantidade de Imóveis',
-                    data: [12, 18, 22, 10, 6], // Mock: Quantidade de imóveis por faixa de tamanho
-                    backgroundColor: '#FFDBAF',
-                    borderColor: '#FFDBAF',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-
+        }
+    }
+});
 
         });
     </script>
