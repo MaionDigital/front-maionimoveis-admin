@@ -33,7 +33,7 @@ $(document).ready(async () => {
                 data: {
                     labels: ["Até 25", "25 - 35", "35 - 45", "45 - 55", "Acima de 55"],
                     datasets: [{
-                        label: "Faixa etária",
+                        label: "Quantidade de Usuários",
                         data: [
                             usersByBirth.twentyFiveMax,
                             usersByBirth.thirtyFiveMax,
@@ -41,8 +41,8 @@ $(document).ready(async () => {
                             usersByBirth.fifityFiveMax,
                             usersByBirth.aboveFifityFive
                         ],
-                        backgroundColor: ["rgba(0, 85, 85)"],
-                        borderColor: "#005555",
+                        backgroundColor: ["rgba(0, 85, 85, 0.9)"],
+                        borderColor: "rgba(0, 85, 85, 0.9)",
                         borderWidth: 2,
                     }]
                 },
@@ -75,13 +75,17 @@ $(document).ready(async () => {
                 data: {
                     labels: ["Vendido", "Alugado", "Disponível"],
                     datasets: [{
-                        label: "Quantidade de Imóveis",
+                        label: "Quantidade de Anúncios",
                         data: [
                             propertiesBySituation?.soldProperties || 0,
                             propertiesBySituation?.rentedProperties || 0,
                             propertiesBySituation?.availableProperties || 0
                         ],
-                        backgroundColor: ["#13194C", "#FFDBAF", "#005555"],
+                        backgroundColor: [
+                            "rgba(19, 25, 76, 0.9)",
+                            "rgba(255, 219, 175, 0.9)",
+                            "rgba(0, 85, 85, 0.9)"
+                        ],
                         borderWidth: 2
                     }]
                 },
@@ -128,22 +132,22 @@ $(document).ready(async () => {
                         {
                             label: "À Venda",
                             data: dataForSale,
-                            backgroundColor: "#13194C",
-                            borderColor: "#13184C",
+                            backgroundColor: "rgba(19, 25, 76, 0.9)",
+                            borderColor: "rgba(19, 25, 76, 0.9)",
                             borderWidth: 2
                         },
                         {
                             label: "À Alugar",
                             data: dataForRent,
-                            backgroundColor: "#FFDBAF",
-                            borderColor: "#FFDBAF",
+                            backgroundColor: "rgba(255, 219, 175, 0.9)",
+                            borderColor: "rgba(255, 219, 175, 0.9)",
                             borderWidth: 2     
                         },
                         {
                             label: "Temporada",
                             data: dataForSeasonal,
-                            backgroundColor: "#005555",
-                            borderColor: "#005555",
+                            backgroundColor: "rgba(0, 85, 85, 0.9)",
+                            borderColor: "rgba(0, 85, 85, 0.9)",
                             borderWidth: 2
                         }
                     ]
@@ -183,7 +187,7 @@ $(document).ready(async () => {
                         usersByGenre.amountFemale,
                         usersByGenre.amountPreferNotToTell
                         ],
-                        backgroundColor: ["#13194C", "#FFDBAF", "#005555"],
+                        backgroundColor: ["rgba(19, 25, 76, 0.9)", "rgba(255, 219, 175, 0.9)", "rgba(0, 85, 85, 0.9)"],
                         borderWidth: 2
                     }]
                 },
@@ -224,8 +228,8 @@ $(document).ready(async () => {
                             propertiesPriceSeasonal.threeThousandMax,
                             propertiesPriceSeasonal.aboveThreeThousand,
                         ],
-                        backgroundColor: ["rgba(0, 85, 85)"],
-                        borderColor: "#005555",
+                        backgroundColor: "rgba(0, 85, 85)",
+                        borderColor: "rgba(0, 85, 85, 0.9)",
                         borderWidth: 2,
                         fill: true
                     }]
@@ -267,8 +271,8 @@ $(document).ready(async () => {
                             propertiesPriceRent.tenThousandMax,
                             propertiesPriceRent.aboveTenThousand
                         ],
-                        backgroundColor: ["rgba(255, 219, 175)"],
-                        borderColor: "#FFDBAF",
+                        backgroundColor: "rgba(255, 219, 175)",
+                        borderColor: "rgba(255, 219, 175, 0.9)",
                         borderWidth: 2,
                         fill: true
                     }]
@@ -311,8 +315,8 @@ $(document).ready(async () => {
                             propertiesPriceSell.oneMillionMax,
                             propertiesPriceSell.aboveOneMillion
                         ],
-                        backgroundColor: ["rgba(19, 25, 76)"],
-                        borderColor: "#13194C",
+                        backgroundColor: "rgba(19, 25, 76)",
+                        borderColor: "rgba(19, 25, 76)",
                         borderWidth: 2,
                         fill: true
                     }]
@@ -346,7 +350,7 @@ $(document).ready(async () => {
                 data: {
                     labels: ['Até 50m²', '50m² - 100m²', '100m² - 200m²', '200m² - 300m²', 'Acima de 300m²'],
                     datasets: [{
-                        label: "Quantidade de Imóveis",
+                        label: "Quantidade de Anúncios",
                         data: [
                             propertiesByArea.fifityMax,
                             propertiesByArea.oneHundredMax,
@@ -354,8 +358,8 @@ $(document).ready(async () => {
                             propertiesByArea.threeHundredMax,
                             propertiesByArea.aboveThreeHundred
                         ],
-                        backgroundColor: ["rgba(0, 85, 85)"],
-                        // borderColor: "#13194C",
+                        backgroundColor: "rgba(255, 219, 175, 0.9)",
+                        borderColor: "rgba(255, 219, 175, 0.9)",
                         borderWidth: 2
                     }]
                 },
@@ -388,9 +392,9 @@ $(document).ready(async () => {
                 data: {
                     labels: propertiesByCity.map((element) => element.name),
                     datasets: [{
-                        label: "Quantidade de Imóveis",
+                        label: "Quantidade de Anúncios",
                         data: propertiesByCity.map((element) => parseInt(element.amountProperties)),
-                        backgroundColor: ["rgba(255, 219, 175, 0.85)", "rgba(255, 219, 175, 0.65)"],
+                        backgroundColor: "rgba(0, 85, 85, 0.9)",
                         borderWidth: 2
                     }]
                 },
@@ -423,13 +427,9 @@ $(document).ready(async () => {
                 data: {
                     labels: propertiesByType?.map((element) => element.type),
                     datasets: [{
-                        label: "Quantidade",
+                        label: "Quantidade de Anúncios",
                         data: propertiesByType.map((element) => parseInt(element.amountProperties)),
-                        backgroundColor: [
-                            "#13194C",
-                            "#FFDBAF",
-                            "#005555",
-                        ],
+                        backgroundColor: "rgba(19, 25, 76, 0.9)",
                         borderWidth: 2
                     }]
                 },
@@ -469,9 +469,9 @@ $(document).ready(async () => {
                 data: {
                     labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
                     datasets: [{
-                        label: "Imóveis Cadastrados",
+                        label: "Quantidade de Anúncios",
                         data: propertiesCountByMonth,
-                        backgroundColor: "#13194C",
+                        backgroundColor: "rgba(255, 219, 175, 0.9)",
                         borderWidth: 2,
                         fill: true
                     }]
@@ -505,10 +505,10 @@ $(document).ready(async () => {
                 data: {
                     labels: usersByState.map((element) => element.state),
                     datasets: [{
-                        label: "Quantidade",
+                        label: "Quantidade de Usuários",
                         data: usersByState.map((element) => parseInt(element.amountUsers)),
-                        backgroundColor: "#005555",
-                        borderColor: "#005555",
+                        backgroundColor: "rgba(0, 85, 85, 0.9)",
+                        borderColor: "rgba(0, 85, 85, 0.9)",
                         borderWidth: 2
                     }]
                 },
@@ -549,9 +549,9 @@ $(document).ready(async () => {
                 data: {
                     labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
                     datasets: [{
-                        label: "Usuários Cadastrados",
+                        label: "Quantidade de Usuários",
                         data: usersCountByMonth,
-                        backgroundColor: "#FFDBAF",
+                        backgroundColor: "rgba(255, 219, 175, 0.9)",
                         borderWidth: 2,
                         fill: true
                     }]
@@ -585,16 +585,16 @@ $(document).ready(async () => {
                 data: {
                     labels: ["Proprietário", "Agente Imobiliário", "Imobiliária"],
                     datasets: [{
-                        label: "Quantidade",
+                        label: "Quantidade de Usuários",
                         data: [
                             usersByType?.amountUsers,
                             usersByType?.amountAgents,
                             usersByType?.amountRealestates
                         ],
                         backgroundColor: [
-                            "#13194C",
-                            "#FFDBAF",
-                            "#005555"
+                            "rgba(255, 219, 175, 0.9)",
+                            "rgba(19, 25, 76, 0.9)",
+                            "rgba(0, 85, 85, 0.9)"
                         ],
                         borderWidth: 2
                     }]
