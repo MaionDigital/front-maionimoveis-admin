@@ -47,7 +47,7 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
                     </div>
 
                 </div> 
-                <a href="#" class="nav_link"> 
+                <a class="nav_link link" id="link-sidebar-logout" onclick="logout()"> 
                     <i class='bx bx-log-out nav_icon'></i> 
                     <span class="nav_name">Sair</span> 
                 </a>

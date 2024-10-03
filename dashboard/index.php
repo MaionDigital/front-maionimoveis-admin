@@ -7,13 +7,14 @@
         include($BASE_URL . "/templates/scripts.php");
     ?>
 
+    <script src="<?php echo $BASE_URL ?>/js/helpers/redirectUser/redirectUser.js"></script>
+    <script src="<?php echo $BASE_URL ?>/js/pages/dashboard/dashboard.js"></script>
+
     <script>
         $(document).ready(() => {
             $("#link-sidebar-dashboard").addClass("active")
         })
     </script>
-
-    <script src="<?php echo $BASE_URL ?>/js/pages/dashboard/dashboard.js"></script>
 
     <title>Admin | Dashboard</title>
     

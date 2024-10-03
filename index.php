@@ -6,10 +6,12 @@
         include("./templates/styles.php");
         include("./templates/scripts.php");
     ?>
+    
+    <script src="<?php echo $BASE_URL ?>/js/pages/login/auth.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/css/pages/login/login.css">
 
-    <title>Maion Imóveis | Admin</title>
+    <title>Maion Imóveis | Admin Login</title>
     
 </head>
 <body>
@@ -27,7 +29,7 @@
                         </div>
                     </div>
 
-                    <form>
+                    <form onsubmit="auth(event)">
 
                         <div class="row mb-3">
                             <div class="col">
@@ -43,7 +45,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn btn-sm bg-primary w-100">
+                                <button type="submit" id="login-btn" class="btn btn-sm bg-primary w-100">
                                     <span class="text-white">Login</span>
                                 </button>
                             </div>

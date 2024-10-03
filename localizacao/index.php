@@ -7,13 +7,15 @@
         include($BASE_URL . "/templates/scripts.php");
     ?>
 
+    <script src="<?php echo $BASE_URL ?>/js/helpers/redirectUser/redirectUser.js"></script>
+    <script src="<?php echo $BASE_URL ?>/js/pages/localizacao/localization.js"></script>
+
     <script>
         $(document).ready(() => {
             $("#link-sidebar-localization").addClass("active")
         })
     </script>
 
-    <script src="<?php echo $BASE_URL ?>/js/pages/localizacao/localization.js"></script>
 
     <title>Admin | Localização</title>
 </head>
