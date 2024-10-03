@@ -21,7 +21,13 @@
 <div id="body-pd">
     <?php include($BASE_URL . "/templates/sidebar-menu.php"); ?>
 
-    <div class="body-content">
+    <div class="body-content mt-4">
+
+            <div class="container w-100 text-center pb-3">
+                <h3 class="text-primary fw-bold">APIs</h3>
+            </div>
+
+            <hr class="text-black">
 
         <div class="mt-4">
             <div class="row mb-3">
