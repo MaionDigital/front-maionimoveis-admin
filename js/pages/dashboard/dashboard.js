@@ -18,14 +18,225 @@ $(document).ready(async () => {
     const chartPropertiesByCondition = $("#chart-properties-by-condition")
     const chartPropertiesBySituation = $("#chart-properties-by-situation")
 
+    let cachedDashInfo = JSON.parse(storageGet("dashInfo")) || {}
+
+    // USER CHARTS
     try {
-        const usersByBirth = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/users-by-birth`,
-            null,
-            true,
-            // true
-        ))?.data
+        let usersByMonth = cachedDashInfo?.usersByMonth
+
+        if (!usersByMonth) {
+            usersByMonth = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/users-by-month/2024`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (usersByMonth) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByMonth }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
+
+        if (usersByMonth) {
+
+            const usersCountByMonth = Array(12).fill(0)
+
+            usersByMonth?.forEach((row) => {
+                const monthIndex = row.month - 1
+                usersCountByMonth[monthIndex] = parseInt(row.amountUsers)
+            })
+
+            new Chart(chartUsersByMonth, {
+                type: "line",
+                data: {
+                    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                    datasets: [{
+                        label: "Quantidade de Usuários",
+                        data: usersCountByMonth,
+                        backgroundColor: "rgba(255, 219, 175, 0.9)",
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        }
+    } catch(error) {
+        return
+    }
+
+    try {
+        let usersByType = cachedDashInfo?.usersByType
+
+        if (!usersByType) {
+            usersByType = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/users-by-type`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (usersByType) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByType }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
+
+        if (usersByType) {
+            new Chart(chartUsersByType, {
+                type: "bar",
+                data: {
+                    labels: ["Proprietário", "Agente Imobiliário", "Imobiliária"],
+                    datasets: [{
+                        label: "Quantidade de Usuários",
+                        data: [
+                            usersByType?.amountUsers,
+                            usersByType?.amountAgents,
+                            usersByType?.amountRealestates
+                        ],
+                        backgroundColor: [
+                            "rgba(255, 219, 175, 0.9)",
+                            "rgba(19, 25, 76, 0.9)",
+                            "rgba(0, 85, 85, 0.9)"
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        }
+
+    } catch(error) {
+        return
+    }
+
+    try {
+        let usersByState = cachedDashInfo?.usersByState
+
+        if (!usersByState) {
+            usersByState = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/users-by-state`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (usersByState){
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByState }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
+
+        if (usersByState) {
+            new Chart(chartUsersByState, {
+                type: "bar",
+                data: {
+                    labels: usersByState.map((element) => element.state),
+                    datasets: [{
+                        label: "Quantidade de Usuários",
+                        data: usersByState.map((element) => parseInt(element.amountUsers)),
+                        backgroundColor: "rgba(0, 85, 85, 0.9)",
+                        borderColor: "rgba(0, 85, 85, 0.9)",
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        }
+    } catch(error) {
+        return
+    }
+
+    try {
+        let usersByGenre = cachedDashInfo?.usersByGenre
+
+        if (!usersByGenre) {
+            usersByGenre = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/users-by-genre`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (usersByGenre) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByGenre }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
+
+        if (usersByGenre) {
+            new Chart(chartUsersByGenre, {
+                type: "bar",
+                data: {
+                    labels: ["Masculino", "Feminino", "Prefere não dizer"],
+                    datasets: [{
+                        label: "Quantidade de Usuários",
+                        data: [
+                        usersByGenre.amountMale,
+                        usersByGenre.amountFemale,
+                        usersByGenre.amountPreferNotToTell
+                        ],
+                        backgroundColor: ["rgba(19, 25, 76, 0.9)", "rgba(255, 219, 175, 0.9)", "rgba(0, 85, 85, 0.9)"],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            })
+        }
+    } catch(error) {
+        return
+    }
+
+    try {
+        let usersByBirth = cachedDashInfo?.usersByBirth
+
+        if (!usersByBirth) {
+            usersByBirth = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/users-by-birth`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (usersByBirth) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByBirth }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (usersByBirth) {
             new Chart(chartUsersByBirth, {
@@ -60,14 +271,25 @@ $(document).ready(async () => {
         return
     }
 
+    // PROPERTY CHARTS
+
     try {
-        const propertiesBySituation = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-by-situation`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesBySituation = cachedDashInfo?.propertiesBySituation
+
+        if (!propertiesBySituation) {
+            propertiesBySituation = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-by-situation`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesBySituation) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesBySituation }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesBySituation) {
             new Chart(chartPropertiesBySituation, {
@@ -104,13 +326,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const propertiesByCondition = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-by-condition/2024`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesByCondition = cachedDashInfo?.propertiesByCondition
+
+        if (!propertiesByCondition) {
+            propertiesByCondition = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-by-condition/2024`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesByCondition) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByCondition }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesByCondition) {
             const dataForSale = Array(12).fill(0)
@@ -167,52 +398,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const usersByGenre = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/users-by-genre`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesPriceSeasonal = cachedDashInfo?.propertiesPriceSeasonal
 
-        if (usersByGenre) {
-            new Chart(chartUsersByGenre, {
-                type: "bar",
-                data: {
-                    labels: ["Masculino", "Feminino", "Prefere não dizer"],
-                    datasets: [{
-                        label: "Quantidade de Usuários",
-                        data: [
-                        usersByGenre.amountMale,
-                        usersByGenre.amountFemale,
-                        usersByGenre.amountPreferNotToTell
-                        ],
-                        backgroundColor: ["rgba(19, 25, 76, 0.9)", "rgba(255, 219, 175, 0.9)", "rgba(0, 85, 85, 0.9)"],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            })
+        if (!propertiesPriceSeasonal) {
+            propertiesPriceSeasonal = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-price-seasonal`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesPriceSeasonal) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceSeasonal }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
         }
-    } catch(error) {
-        return
-    }
-
-    try {
-        const propertiesPriceSeasonal = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-price-seasonal`,
-            null,
-            true,
-            // true
-        ))?.data
 
         if (propertiesPriceSeasonal) {
             new Chart(chartPropertiesPriceSeasonal, {
@@ -249,13 +450,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const propertiesPriceRent = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-price-rent`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesPriceRent = cachedDashInfo?.propertiesPriceRent
+
+        if (!propertiesPriceRent) {
+            propertiesPriceRent = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-price-rent`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesPriceRent) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceRent }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesPriceRent) {
             new Chart(chartPropertiesPriceRent, {
@@ -292,14 +502,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const propertiesPriceSell = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-price-sell`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesPriceSell = cachedDashInfo?.propertiesPriceSell
 
+        if (!propertiesPriceSell) {
+            propertiesPriceSell = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-price-sell`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesPriceSell) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceSell }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesPriceSell) {
             new Chart(chartPropertiesPriceSell, {
@@ -336,13 +554,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const propertiesByArea = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-by-area`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesByArea = cachedDashInfo?.propertiesByArea
+
+        if (!propertiesByArea) {
+            propertiesByArea = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-by-area`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesByArea) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByArea }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesByArea) {
             new Chart(chartPropertiesByArea, {
@@ -378,13 +605,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const propertiesByCity = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-by-city`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesByCity = cachedDashInfo?.propertiesByCity
+
+        if (!propertiesByCity) {
+            propertiesByCity = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-by-city`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesByCity) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByCity }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesByCity) {
             new Chart(chartPropertiesByCity, {
@@ -413,13 +649,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const propertiesByType = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-by-type`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesByType = cachedDashInfo?.propertiesByType
+
+        if (!propertiesByType) {
+            propertiesByType = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-by-type`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesByType) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByType }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesByType) {
             new Chart(chartPropertiesByType, {
@@ -448,13 +693,22 @@ $(document).ready(async () => {
     }
 
     try {
-        const propertiesByMonth = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/properties-by-month/2024`,
-            null,
-            true,
-            // true
-        ))?.data
+        let propertiesByMonth = cachedDashInfo?.propertiesByMonth
+
+        if (!propertiesByMonth) {
+            propertiesByMonth = (await router(
+                "GET",
+                `${ENDPOINTS.dashboard}/properties-by-month/2024`,
+                null,
+                true,
+                // true
+            ))?.data
+
+            if (propertiesByMonth) {
+                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByMonth }))
+                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+            }
+        }
 
         if (propertiesByMonth) {
             const propertiesCountByMonth = Array(12).fill(0)
@@ -490,127 +744,4 @@ $(document).ready(async () => {
         return
     }
 
-    try {
-        const usersByState = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/users-by-state`,
-            null,
-            true,
-            // true
-        ))?.data
-
-        if (usersByState) {
-            new Chart(chartUsersByState, {
-                type: "bar",
-                data: {
-                    labels: usersByState.map((element) => element.state),
-                    datasets: [{
-                        label: "Quantidade de Usuários",
-                        data: usersByState.map((element) => parseInt(element.amountUsers)),
-                        backgroundColor: "rgba(0, 85, 85, 0.9)",
-                        borderColor: "rgba(0, 85, 85, 0.9)",
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            })
-        }
-    } catch(error) {
-        return
-    }
-
-    try {
-        const usersByMonth = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/users-by-month/2024`,
-            null,
-            true,
-            // true
-        ))?.data
-
-        if (usersByMonth) {
-
-            const usersCountByMonth = Array(12).fill(0)
-
-            usersByMonth?.forEach((row) => {
-                const monthIndex = row.month - 1
-                usersCountByMonth[monthIndex] = parseInt(row.amountUsers)
-            })
-
-            new Chart(chartUsersByMonth, {
-                type: "line",
-                data: {
-                    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-                    datasets: [{
-                        label: "Quantidade de Usuários",
-                        data: usersCountByMonth,
-                        backgroundColor: "rgba(255, 219, 175, 0.9)",
-                        borderWidth: 2,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            })
-        }
-    } catch(error) {
-        return
-    }
-
-    try {
-        const usersByType = (await router(
-            "GET",
-            `${ENDPOINTS.dashboard}/users-by-type`,
-            null,
-            true,
-            // true
-        ))?.data
-
-        if (usersByType) {
-            new Chart(chartUsersByType, {
-                type: "bar",
-                data: {
-                    labels: ["Proprietário", "Agente Imobiliário", "Imobiliária"],
-                    datasets: [{
-                        label: "Quantidade de Usuários",
-                        data: [
-                            usersByType?.amountUsers,
-                            usersByType?.amountAgents,
-                            usersByType?.amountRealestates
-                        ],
-                        backgroundColor: [
-                            "rgba(255, 219, 175, 0.9)",
-                            "rgba(19, 25, 76, 0.9)",
-                            "rgba(0, 85, 85, 0.9)"
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            })
-        }
-
-    } catch(error) {
-        return
-    }
 })
