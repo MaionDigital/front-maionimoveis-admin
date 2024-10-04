@@ -29,7 +29,7 @@ async function auth(event) {
         ))?.data
 
         if (auth) {
-            storageInsert(["token", "userInfo"], [auth?.token, JSON.stringify(auth?.user)])
+            storageInsert(["miadm_token", "miadm_userInfo"], [auth?.token, JSON.stringify(auth?.user)])
 
             changePage("/dashboard")
         } else {

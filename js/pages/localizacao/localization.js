@@ -2,7 +2,7 @@ $(document).ready(async () => {
     const selectState = $("#input-father-state")
     const selectCity = $("#input-father-city")
 
-    const storagedCities = JSON.parse(storageGet("localizationInfo"))?.cities
+    const storagedCities = JSON.parse(storageGet("miadm_localizationInfo"))?.cities
 
     async function fetchCities(stateId) {
         try {
@@ -20,7 +20,7 @@ $(document).ready(async () => {
                 selectCity.append(option)
             })
 
-            storageInsert("localizationInfo", JSON.stringify({ localizationInfo: { cities: fetchCities } }))
+            storageInsert("miadm_localizationInfo", JSON.stringify({ localizationInfo: { cities: fetchCities } }))
         } catch(error) {
             return
         }

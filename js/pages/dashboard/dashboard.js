@@ -18,7 +18,7 @@ $(document).ready(async () => {
     const chartPropertiesByCondition = $("#chart-properties-by-condition")
     const chartPropertiesBySituation = $("#chart-properties-by-situation")
 
-    let cachedDashInfo = JSON.parse(storageGet("dashInfo")) || {}
+    let cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo")) || {}
 
     // USER CHARTS
     try {
@@ -34,8 +34,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (usersByMonth) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByMonth }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, usersByMonth }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -87,8 +87,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (usersByType) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByType }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, usersByType }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -140,8 +140,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (usersByState){
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByState }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, usersByState }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -185,8 +185,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (usersByGenre) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByGenre }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, usersByGenre }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -233,8 +233,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (usersByBirth) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, usersByBirth }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, usersByBirth }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -286,8 +286,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesBySituation) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesBySituation }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesBySituation }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -338,8 +338,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesByCondition) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByCondition }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByCondition }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -410,8 +410,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesPriceSeasonal) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceSeasonal }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceSeasonal }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -462,8 +462,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesPriceRent) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceRent }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceRent }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -514,8 +514,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesPriceSell) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceSell }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesPriceSell }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -566,8 +566,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesByArea) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByArea }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByArea }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -617,8 +617,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesByCity) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByCity }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByCity }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -661,8 +661,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesByType) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByType }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByType }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 
@@ -705,8 +705,8 @@ $(document).ready(async () => {
             ))?.data
 
             if (propertiesByMonth) {
-                storageInsert("dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByMonth }))
-                cachedDashInfo = JSON.parse(storageGet("dashInfo"))
+                storageInsert("miadm_dashInfo", JSON.stringify({ ...cachedDashInfo, propertiesByMonth }))
+                cachedDashInfo = JSON.parse(storageGet("miadm_dashInfo"))
             }
         }
 

@@ -1,14 +1,14 @@
 function ensureAuth() {
-    const token = storageGet("token")
-    const userInfo = storageGet("userInfo")
+    const token = storageGet("miadm_token")
+    const userInfo = storageGet("miadm_userInfo")
     
     if ((!token || !userInfo)) {
-        storageRemove(["token", "userInfo"])
+        storageRemove(["miadm_token", "miadm_userInfo"])
         return false
     }
     
     if (isTokenExpired(token)) {
-        storageRemove(["token", "userInfo"])
+        storageRemove(["miadm_token", "miadm_userInfo"])
         return false
     }
     
