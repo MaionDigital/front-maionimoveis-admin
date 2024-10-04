@@ -32,27 +32,27 @@
         <div class="mt-4">
             <div class="row mb-3">
                 <div class="col-lg-2 border-bottom border-start">
-                    <h5 class="d-flex justify-content-between">Application API<i class="bx bxs-circle text-success"></i></h5>
+                    <h5 class="d-flex justify-content-between">Application API<i id="i-application-api" class="bx bxs-circle"></i></h5>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-lg-2 border-bottom border-start">
-                    <h5 class="d-flex justify-content-between">Dicebear API<i class="bx bxs-circle text-success"></i></h5>
+                    <h5 class="d-flex justify-content-between">Dicebear API<i id="i-dicebear-api" class="bx bxs-circle"></i></h5>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-lg-2 border-bottom border-start">
-                    <h5 class="d-flex justify-content-between">ViaCEP API<i class="bx bxs-circle text-success"></i></h5>
+                    <h5 class="d-flex justify-content-between">ViaCEP API<i id="i-viacep-api" class="bx bxs-circle"></i></h5>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-lg-2 border-bottom border-start">
-                    <h5 class="d-flex justify-content-between">SendGrid API<i class="bx bxs-circle text-success"></i></h5>
+                    <h5 class="d-flex justify-content-between">SendGrid API<i id="i-sendgrid-api" class="bx bxs-circle"></i></h5>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-lg-2 border-bottom border-start">
-                    <h5 class="d-flex justify-content-between">Gemini API<i class="bx bxs-circle text-success"></i></h5>
+                    <h5 class="d-flex justify-content-between">Gemini API<i id="i-gemini-api" class="bx bxs-circle"></i></h5>
                 </div>
             </div>
         </div>
