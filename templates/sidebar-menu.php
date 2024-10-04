@@ -57,6 +57,7 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
 
         <script>
             $(document).ready(() => {
-                $("#header-profile-img").attr("src", `${DICEBEAR_API_URL}&seed=Paulo Wellington`)
+                const username = JSON.parse(storageGet("miadm_userInfo"))?.name
+                $("#header-profile-img").attr("src", `${DICEBEAR_API_URL}&seed=${username}`)
             })
         </script>
