@@ -2,7 +2,8 @@ function logout() {
     storageRemove(
         [
             "token",
-            "userInfo"
+            "userInfo",
+            "dashInfo"
         ]
     )
     changePage("index.php")
