@@ -32,6 +32,11 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
                             <span class="nav_name">Localização</span>
                         </a>
 
+                        <a class="nav_link link" id="link-sidebar-features" onclick="changePage('caracteristicas')">
+                            <i class="bx bx-tv nav_icon"></i>
+                            <span class="nav_name">Características</span>
+                        </a>
+
                         <a class="nav_link link" id="link-sidebar-users" onclick="changePage('usuarios')"> 
                             <i class='bx bx-user nav_icon'></i> 
                             <span class="nav_name">Usuários</span> 

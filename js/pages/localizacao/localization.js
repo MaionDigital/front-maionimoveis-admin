@@ -8,10 +8,10 @@ $(document).ready(async () => {
         try {
             const fetchedCities = (await router(
                 "GET",
-                `${ENDPOINTS.localization}/city/${stateId}`,
+                `${ENDPOINTS.propertyLocalization}/city/${stateId}`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
 
@@ -67,12 +67,12 @@ async function registerCity(event) {
     try {
         await router(
             "POST",
-            `${ENDPOINTS.localization}/city`,
+            `${ENDPOINTS.propertyLocalization}/city`,
             dataJSON,
             false,
-            // true
+            true
         )
-        createSuccessToast("Cidade cadastrada!", `A cidade '${city.val()}' foi cadastrada com sucesso!`)
+        createSuccessToast("Cidade cadastrada!", `A cidade <strong>${city.val()}</strong> foi cadastrada com sucesso!`)
         unloaderBtn(registerCityBtn, "Adicionar Cidade")
         city.val("")
         city.focus()
@@ -106,12 +106,12 @@ async function registerNeighborhood(event) {
     try {
         await router(
             "POST",
-            `${ENDPOINTS.localization}/neighborhood`,
+            `${ENDPOINTS.propertyLocalization}/neighborhood`,
             dataJSON,
             false,
-            // true
+            true
         )
-        createSuccessToast("Bairro cadastrado!", `O bairro '${neighborhood.val()}' foi cadastrado com sucesso!`)
+        createSuccessToast("Bairro cadastrado!", `O bairro <strong>${neighborhood.val()}</strong> foi cadastrado com sucesso!`)
         unloaderBtn(registerNeighborhoodBtn, "Adicionar Bairro")
         neighborhood.val("")
         neighborhood.focus()

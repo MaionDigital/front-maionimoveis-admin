@@ -5,7 +5,7 @@ $(document).ready(async () => {
             `${ENDPOINTS.admin}`,
             null,
             true,
-            // true
+            true
         ))?.data
 
         if (users) {
@@ -75,7 +75,7 @@ async function registerUser(btn) {
             `${ENDPOINTS.admin}`,
             dataJSON,
             false,
-            // true
+            true
         )
         location.reload()
     } catch(error) {
@@ -101,7 +101,7 @@ async function updateUserSituation(btn) {
                 situation
             },
             false,
-            // true
+            true
         )
         location.reload()
     } catch(error) {

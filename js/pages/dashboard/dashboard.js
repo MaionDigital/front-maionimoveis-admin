@@ -30,7 +30,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/users-by-month/2024`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (usersByMonth) {
@@ -83,7 +83,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/users-by-type`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (usersByType) {
@@ -136,7 +136,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/users-by-state`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (usersByState){
@@ -181,7 +181,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/users-by-genre`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (usersByGenre) {
@@ -229,7 +229,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/users-by-birth`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (usersByBirth) {
@@ -282,7 +282,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-by-situation`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesBySituation) {
@@ -334,7 +334,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-by-condition/2024`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesByCondition) {
@@ -406,7 +406,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-price-seasonal`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesPriceSeasonal) {
@@ -458,7 +458,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-price-rent`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesPriceRent) {
@@ -510,7 +510,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-price-sell`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesPriceSell) {
@@ -562,7 +562,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-by-area`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesByArea) {
@@ -613,7 +613,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-by-city`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesByCity) {
@@ -657,7 +657,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-by-type`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesByType) {
@@ -701,7 +701,7 @@ $(document).ready(async () => {
                 `${ENDPOINTS.dashboard}/properties-by-month/2024`,
                 null,
                 true,
-                // true
+                true
             ))?.data
 
             if (propertiesByMonth) {

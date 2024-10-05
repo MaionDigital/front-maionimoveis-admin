@@ -9,7 +9,8 @@ const ENDPOINTS = {
     auth: "/auth",
     admin: "/admin",
     dashboard: "/dashboard",
-    localization: "/localization",
+    propertyLocalization: "/property-localization",
+    propertyFeature: "/property-feature"
 }
 
 // DICEBERA API CONFIG
