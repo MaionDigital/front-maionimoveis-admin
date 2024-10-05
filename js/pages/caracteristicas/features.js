@@ -1,37 +1,64 @@
+let types = JSON.parse(storageGet("miadm_propertyTypes"))
+let cachedTypeFeatures = JSON.parse(storageGet("miadm_propertyTypeFeatures"))
+
 $(document).ready(async () => {
     try {
-        const types = (await router(
-            "GET",
-            `${ENDPOINTS.propertyFeature}/type`,
-            null,
-            true,
-            true
-        ))?.data
+
+        const inputPropertyType = $("#input-father-type")
+        const inputPropertyFeature = $("#input-son-feature")
+
+        if (!types) {
+            types = (await router(
+                "GET",
+                `${ENDPOINTS.propertyFeature}/type`,
+                null,
+                true,
+                true
+            ))?.data
+
+            if (types) {
+                storageInsert("miadm_propertyTypes", JSON.stringify(types))
+            }
+        }
 
         if (types) {
-            const inputPropertyType = $("#input-father-type")
 
             types?.forEach((type) => {
                 const option = $("<option>").val(type?.id).text(type?.name)
                 inputPropertyType.append(option)
             })
-        }
 
-        const features = (await router(
-            "GET",
-            `${ENDPOINTS.propertyFeature}/feature`,
-            null,
-            true,
-            true
-        ))?.data
+            async function fetchPropertyFeaturesByType(propertyType) {
+                let typeFeatures = cachedTypeFeatures?.[propertyType] || null
 
-        if (features) {
-            const inputPropertyFeature = $("#input-son-feature")
+                if (!typeFeatures) {
+                    typeFeatures = (await router(
+                        "GET",
+                        `${ENDPOINTS.propertyFeature}/feature/${propertyType}`,
+                        null,
+                        true,
+                        true
+                    ))?.data
 
-            features?.forEach((feature) => {
-                const option = $("<option>").val(feature?.id).text(feature?.name)
-                inputPropertyFeature.append(option)
-            })
+                    if (typeFeatures) {
+                        storageInsert("miadm_propertyTypeFeatures", JSON.stringify({ ...cachedTypeFeatures, [propertyType]: typeFeatures }))
+                        cachedTypeFeatures = JSON.parse(storageGet("miadm_propertyTypeFeatures"))
+                    }
+                }
+
+                if (typeFeatures) {               
+                    inputPropertyFeature.empty()
+
+                    typeFeatures?.forEach((feature) => {
+                        const option = $("<option>").val(feature?.id_propertyfeature).text(feature?.name_propertyfeature)
+                        inputPropertyFeature.append(option)
+                    })
+                }
+            }
+
+            inputPropertyType.on("change", function() { fetchPropertyFeaturesByType($(this).val()) })
+
+            await fetchPropertyFeaturesByType(inputPropertyType.val())
         }
     } catch(error) {
 
@@ -43,6 +70,8 @@ async function registerTypeFeature(event) {
 
     const type = $("#input-father-type")
     const feature = $("#input-son-feature")
+
+    const selectedFeature = feature.find(`option[value="${feature.val()}"]`)
 
     const typeName = $("#input-father-type option:selected").text()
     const featureName = $("#input-son-feature option:selected").text()
@@ -72,6 +101,14 @@ async function registerTypeFeature(event) {
         )
 
         createSuccessToast("Característica-Tipo Cadastrado", `A característica <strong>${featureName}</strong> foi adicionada ao tipo <strong>${typeName}</strong> com sucesso!`)
+
+        cachedTypeFeatures = JSON.parse(storageGet("miadm_propertyTypeFeatures"))
+        const updatedFeatures = cachedTypeFeatures[type.val()]?.filter((element) => element.id_propertyfeature !== feature.val()) || []
+
+        storageInsert("miadm_propertyTypeFeatures", JSON.stringify({ ...cachedTypeFeatures, [type.val()]: updatedFeatures }))
+        cachedTypeFeatures = JSON.parse(storageGet("miadm_propertyTypeFeatures"))
+
+        selectedFeature.remove()
         unloaderBtn(registerTypeFeatureBtn, "Adicionar Característica-Tipo")
     } catch(error) {
         unloaderBtn(registerTypeFeatureBtn, "Adicionar Característica-Tipo")
