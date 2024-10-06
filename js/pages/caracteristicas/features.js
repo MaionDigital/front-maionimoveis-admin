@@ -82,7 +82,7 @@ async function registerTypeFeature(event) {
 
     if (!type.val() || !feature.val()) {
         createOpsToast("Por favor, selecione um tipo e uma característica válida.")
-        unloaderBtn(registerTypeFeatureBtn, "Adicionar Característica-Tipo")
+        unloaderBtn(registerTypeFeatureBtn, "Adicionar Tipo-Característica")
         return
     }
 
@@ -100,7 +100,7 @@ async function registerTypeFeature(event) {
             true
         )
 
-        createSuccessToast("Característica-Tipo Cadastrado", `A característica <strong>${featureName}</strong> foi adicionada ao tipo <strong>${typeName}</strong> com sucesso!`)
+        createSuccessToast("Tipo-Característica Cadastrado", `A característica <strong>${featureName}</strong> foi adicionada ao tipo <strong>${typeName}</strong> com sucesso!`)
 
         cachedTypeFeatures = JSON.parse(storageGet("miadm_propertyTypeFeatures"))
         const updatedFeatures = cachedTypeFeatures[type.val()]?.filter((element) => element.id_propertyfeature !== feature.val()) || []
@@ -109,9 +109,9 @@ async function registerTypeFeature(event) {
         cachedTypeFeatures = JSON.parse(storageGet("miadm_propertyTypeFeatures"))
 
         selectedFeature.remove()
-        unloaderBtn(registerTypeFeatureBtn, "Adicionar Característica-Tipo")
+        unloaderBtn(registerTypeFeatureBtn, "Adicionar Tipo-Característica")
     } catch(error) {
-        unloaderBtn(registerTypeFeatureBtn, "Adicionar Característica-Tipo")
+        unloaderBtn(registerTypeFeatureBtn, "Adicionar Tipo-Característica")
     }
 }
 

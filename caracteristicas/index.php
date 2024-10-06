@@ -83,7 +83,7 @@
 
             <div class="row">
                 <div class="col">
-                    <h4>Característica-Tipo</h4>
+                    <h4>Tipo-Característica</h4>
                 </div>
             </div>
 
@@ -102,7 +102,7 @@
                     <div class="col-lg-3">
                         <button class="btn btn-sm bg-primary" id="register-type-feature-btn" type="submit">
                             <span class="text-white">
-                                Adicionar Característica-Tipo
+                                Adicionar Tipo-Característica
                             </span>
                         </button>
                     </div>
