@@ -19,4 +19,4 @@ const ENDPOINTS = {
 }
 
 // DICEBERA API CONFIG
-const DICEBEAR_API_URL = "https://api.dicebear.com/9.x/initials/svg?radius=50&backgroundColor=13194C&textColor=ffffff"
+const DICEBEAR_API_URL = "https://api.dicebear.com/9.x/initials/svg?radius=50&backgroundColor=13194C&textColor=ffffff";
