@@ -3,7 +3,7 @@ async function router(method, url, data=null, getResponse=false, token=false) {
         let response
         const headers = {}
 
-        if (token) { headers["Authorization"] = `Bearer ${storageGet("token")}` }
+        if (token) { headers["Authorization"] = `Bearer ${storageGet("miadm_token")}` }
 
         if (method === "GET") {
             response = await axios.get(`${API_URL}${url}`, { headers })
