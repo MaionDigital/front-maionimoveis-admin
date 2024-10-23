@@ -1,9 +1,14 @@
 // API CONFIG
-const API_PORT = 9090
-const API_URL = `http://localhost:${API_PORT}`
+// const API_PORT = 9090
+// const API_URL = `http://localhost:${API_PORT}`
+
+const API_URL = "https://api-maionimoveis-admin-288469245639.southamerica-east1.run.app"
+
+// URL CONFIG
+const baseURL = "https://admin.maionimoveis.com.br"
 
 // CRYPTOJS CONFIG
-const CRYPTO_KEY = "realestate_admin"
+const CRYPTO_KEY = "+dq:T35:7dH]"
 
 const ENDPOINTS = {
     auth: "/auth",
