@@ -14,7 +14,6 @@ $(document).ready(async () => {
                 true
             ))?.data
 
-
             fetchedCities?.forEach((city) => {
                 const option = $("<option>").val(city.id).text(city.name)
                 selectCity.append(option)
@@ -29,7 +28,7 @@ $(document).ready(async () => {
     selectState.on("change", async function() {
         const stateId = $(this).val()
 
-        if (storagedCities[stateId]) {
+        if (storagedCities?.[stateId]) {
             storagedCities[stateId].forEach((city) => {
                 const option = $("<option>").val(city.id).text(city.name)
                 selectNeighborhood.append(option)
