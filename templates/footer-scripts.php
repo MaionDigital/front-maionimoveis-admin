@@ -1,4 +1,4 @@
 <?php 
-$BASE_URL = "http://localhost/projects/realestate_front";
+$BASE_URL = "https://admin.maionimoveis.com.br";
 ?>
-<script src="<?php echo $BASE_URL ?>/js/scripts/helpers/buttonLoading/buttonLoading.js"></script>
+<script src="<?php echo $BASE_URL ?>/assets/js/scripts/helpers/buttonLoading/buttonLoading.js"></script>

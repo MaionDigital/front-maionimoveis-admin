@@ -3,8 +3,8 @@
 <head>
     <?php 
         include("../templates/variables.php");
-        include($BASE_URL . "/templates/styles.php");
-        include($BASE_URL . "/templates/scripts.php");
+        include("../templates/styles.php");
+        include("../templates/scripts.php");
     ?>
 
     <script>
@@ -13,13 +13,13 @@
         })
     </script>
 
-    <script src="<?php echo $BASE_URL ?>/js/pages/apis/apis.js"></script>
+    <script src="<?php echo $BASE_URL ?>/assets/js/pages/apis/apis.js"></script>
 
     <title>Admin | APIs</title>
 </head>
 
 <div id="body-pd">
-    <?php include($BASE_URL . "/templates/sidebar-menu.php"); ?>
+    <?php include("../templates/sidebar-menu.php"); ?>
 
     <div class="body-content mt-4">
 
@@ -62,7 +62,9 @@
 
 </div>
 
-<?php include($BASE_URL . "/templates/footer-scripts.php"); ?>
+    <?php
+    include("../templates/footer-scripts.php");
+    ?>
 
 </body>
 </html>

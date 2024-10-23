@@ -3,12 +3,12 @@
 <head>
     <?php 
         include("../templates/variables.php");
-        include($BASE_URL . "/templates/styles.php");
-        include($BASE_URL . "/templates/scripts.php");
+        include("../templates/styles.php");
+        include("../templates/scripts.php");
     ?>
 
-    <script src="<?php echo $BASE_URL ?>/js/helpers/redirectUser/redirectUser.js"></script>
-    <script src="<?php echo $BASE_URL ?>/js/pages/usuarios/users.js"></script>
+    <script src="<?php echo $BASE_URL ?>/assets/js/helpers/redirectUser/redirectUser.js"></script>
+    <script src="<?php echo $BASE_URL ?>/assets/js/pages/usuarios/users.js"></script>
 
     <script>
         $(document).ready(() => {
@@ -16,14 +16,14 @@
         })
     </script>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/css/pages/dashboard/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/assets/css/pages/dashboard/dashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <title>Admin | Usuários</title>
 </head>
 
 <div id="body-pd">
-    <?php include($BASE_URL . "/templates/sidebar-menu.php"); ?>
+    <?php include("../templates/sidebar-menu.php"); ?>
 
     <div class="body-content mt-4">
 
@@ -59,8 +59,9 @@
     </div>
 </div>
 
-
-<?php include($BASE_URL . "/templates/footer-scripts.php"); ?>
+    <?php 
+    include("../templates/footer-scripts.php");
+    ?>
 
 </body>
 </html>

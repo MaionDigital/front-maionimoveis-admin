@@ -3,12 +3,12 @@
 <head>
     <?php 
         include("../templates/variables.php");
-        include($BASE_URL . "/templates/styles.php");
-        include($BASE_URL . "/templates/scripts.php");
+        include("../templates/styles.php");
+        include("../templates/scripts.php");
     ?>
 
-    <script src="<?php echo $BASE_URL ?>/js/helpers/redirectUser/redirectUser.js"></script>
-    <script src="<?php echo $BASE_URL ?>/js/pages/caracteristicas/features.js"></script>
+    <script src="<?php echo $BASE_URL ?>/assets/js/helpers/redirectUser/redirectUser.js"></script>
+    <script src="<?php echo $BASE_URL ?>/assets/js/pages/caracteristicas/features.js"></script>
 
     <script>
         $(document).ready(() => {
@@ -23,7 +23,7 @@
 
 <div id="body-pd">
 
-    <?php include($BASE_URL . "/templates/sidebar-menu.php"); ?>
+    <?php include("../templates/sidebar-menu.php"); ?>
 
     <div class="body-content mt-4">
 
@@ -115,7 +115,9 @@
 
     </div>
 
-    <?php include($BASE_URL . "/templates/footer-scripts.php"); ?>
+    <?php
+    include("../templates/footer-scripts.php");
+    ?>
 
 </body>
 </html>

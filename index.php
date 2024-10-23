@@ -7,9 +7,9 @@
         include("./templates/scripts.php");
     ?>
     
-    <script src="<?php echo $BASE_URL ?>/js/pages/login/auth.js"></script>
+    <script src="<?php echo $BASE_URL ?>/assets/js/pages/login/auth.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/css/pages/login/login.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $BASE_URL ?>/assets/css/pages/login/login.css">
 
     <title>Maion Imóveis | Admin Login</title>
     
@@ -23,7 +23,7 @@
 
                     <div>
                         <div class="text-center mb-4">
-                            <img src="<?php echo $BASE_URL ?>/images/logos/maion-logo-blue.png" alt="" style="width: 100px;">
+                            <img src="<?php echo $BASE_URL ?>/assets/images/logos/maion-logo-blue.png" alt="" style="width: 100px;">
                             <h2 class="mt-2">Login</h2>
                             <hr>
                         </div>

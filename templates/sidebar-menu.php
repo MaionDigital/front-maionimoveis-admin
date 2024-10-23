@@ -1,5 +1,5 @@
 <?php
-$BASE_URL = "http://localhost/projects/realestate_front_admin";
+$BASE_URL = "https://admin.maionimoveis.com.br";
 ?>
         <header class="header" id="header">
             <div class="header_toggle"> 
@@ -16,7 +16,7 @@ $BASE_URL = "http://localhost/projects/realestate_front_admin";
 
                     <div class="nav_list"> 
                         <a href="#" id="nav-logo" class="d-none d-flex justify-content-center"> 
-                            <img src="<?php echo $BASE_URL ?>/images/logos/maion-logo-white.png" alt="" style="width: 100px;">
+                            <img src="<?php echo $BASE_URL ?>/assets/images/logos/maion-logo-white.png" alt="" style="width: 100px;">
                             <br>
                         </a>
 

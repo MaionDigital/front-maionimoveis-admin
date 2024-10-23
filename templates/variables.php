@@ -1,3 +1,3 @@
 <?php 
-$BASE_URL = "http://localhost/projects/realestate_front_admin";
+$BASE_URL = "https://admin.maionimoveis.com.br";
 ?>
